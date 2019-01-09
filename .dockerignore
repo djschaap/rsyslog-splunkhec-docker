@@ -1,0 +1,7 @@
+*~
+*.bak
+*.sw?
+tmp*
+run
+build.sh
+README*
