@@ -1,7 +1,7 @@
 FROM rsyslog/syslog_appliance_alpine:8.36.0-3.7
 LABEL maintainer="djschaap@gmail.com"
 RUN apk --no-cache add python \
-  && apk --no-cache add --virtual .build-deps curl py2-pip \
+  && apk --no-cache add --virtual .build-deps curl liblognorm py2-pip \
   && pip install requests \
   && sed -i -re 's/^(export ENABLE_LOGFILES\s*=\s*)/#\1/' \
      /home/appliance/internal/container_config \
