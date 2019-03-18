@@ -1,0 +1,5 @@
+version=2
+
+annotate=from_MSWinEventLog:+app_name="MSWinEventLog"
+annotate=from_MSWinEventLog:+syslogtag="MSWinEventLog:"
+rule=from_MSWinEventLog:<%pri:number%>%date:date-rfc3164% %hostname:word% MSWinEventLog#011%msg:rest%

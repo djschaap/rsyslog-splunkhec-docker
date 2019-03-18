@@ -1,10 +1,33 @@
-FROM rsyslog/syslog_appliance_alpine:8.36.0-3.7
+FROM alpine:3.9
 LABEL maintainer="djschaap@gmail.com"
+VOLUME /config /work /logs
 RUN apk --no-cache add python \
-  && apk --no-cache add --virtual .build-deps curl py2-pip \
+  && apk --no-cache add --virtual .build-deps \
+  && apk --no-cache add \
+     liblognorm \
+     py2-pip \
+     rsyslog \
+     rsyslog-mmjsonparse \
+     rsyslog-mmnormalize \
+     rsyslog-mmutf8fix \
   && pip install requests \
-  && curl -o /usr/bin/omsplunkhec.py https://bitbucket.org/rfaircloth-splunk/rsyslog-omsplunk/raw/cca949cd5896d5a34be1e7358b3f3467977a4e1f/omsplunkhec.py \
-  && chmod 0755 /usr/bin/omsplunkhec.py \
-  && apk --no-cache del .build-deps
-# wget fails with: TLS error from peer (alert code 40): handshake failure
-# wget https://bitbucket.org/rfaircloth-splunk/rsyslog-omsplunk/raw/cca949cd5896d5a34be1e7358b3f3467977a4e1f/omsplunkhec.py
+  && apk --no-cache del .build-deps \
+  && addgroup -S rsyslog \
+  && adduser -S -D -s /bin/sh rsyslog rsyslog \
+  && chown -R rsyslog.rsyslog /logs /work
+
+COPY config /config
+COPY entrypoint.sh /
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["rsyslogd", "-f", "/config/rsyslog.conf", "-n"]
+
+EXPOSE 5140/udp 5141/udp 5142/udp 5143/udp 5145/udp
+
+ENV CUSTOMER_ID 00000
+ENV ENABLE_LOG_DEBUG off
+ENV ENABLE_LOG_FILES off
+#ENV ENABLE_STATISTICS on
+ENV HEC_HOST splunk-hf
+ENV HEC_TOKEN ""
+ENV TZ UTC

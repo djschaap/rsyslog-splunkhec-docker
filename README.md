@@ -1,9 +1,16 @@
 # rsyslog-splunkhec-docker
 
-rsyslog Docker image with omsplunkhec
+Docker image for running rsyslog & omsplunkhec within Docker.
 
-rsyslog-docker's syslog_appliance_alpine image, enhanced with
-python2 and rfaircloth's rsyslog-omsplunk module.
+Based on Alpine Linux.
 
-https://github.com/rsyslog/rsyslog-docker
-https://bitbucket.org/rfaircloth-splunk/rsyslog-omsplunk
+USE AT YOUR OWN RISK.
+
+Project Home: https://github.com/djschaap/rsyslog-splunkhec-docker
+
+Docker Hub: https://cloud.docker.com/repository/docker/djschaap/rsyslog_splunkhec
+
+## See Also
+
+- https://github.com/rsyslog/rsyslog-docker
+- https://bitbucket.org/rfaircloth-splunk/rsyslog-omsplunk/src
