@@ -1,5 +1,7 @@
+__pycache__/
 *~
 *.bak
+*.py[cod]
 *.sw?
 tmp*
 run

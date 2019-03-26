@@ -1,0 +1,1 @@
+<190>107356938: RTR01: 107356936: Mar 26 11:42:43.832 MST: %IOSXE-6-PLATFORM:cpp_cp: QFP:0.0 Thread:001 TS:00030437466936823026 %FW-6-DROP_PKT: Dropping udp pkt from GigabitEthernet0/0/1.10 192.0.2.11:42990 => 255.255.255.255:42990(target:class)-(DEFAULT-PCI_19-SELF:class-default) due to Policy drop:classify result with ip ident 18478

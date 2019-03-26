@@ -1,0 +1,18 @@
+[
+  {
+    "originalmsg":"<191>18977877: 11088502: Mar 26 2019 14:10:16.624 CDT: //72877/9A0C52A7A7B7/CCAPI/cc_api_t38_fax_start:",
+    "unparsed-data":": //72877/9A0C52A7A7B7/CCAPI/cc_api_t38_fax_start:"
+  },
+  {
+    "originalmsg":"<191>18977878: Destination Interface=0x414DBD94, Destination Call Id=72876, Source Call Id=72877,",
+    "unparsed-data":" Interface=0x414DBD94, Destination Call Id=72876, Source Call Id=72877,"
+  },
+  {
+    "originalmsg":"   Caps(Codec=T38Fax(0x10000), Fax Rate=FAX_RATE_VOICE(0x2),Fax Version:=0, Vad=ON(0x2),",
+    "unparsed-data":"   Caps(Codec=T38Fax(0x10000), Fax Rate=FAX_RATE_VOICE(0x2),Fax Version:=0, Vad=ON(0x2),"
+  },
+  {
+    "originalmsg":"   Modem=OFF(0x0), Codec Bytes=20, Signal Type=2)",
+    "unparsed-data":"   Modem=OFF(0x0), Codec Bytes=20, Signal Type=2)"
+  }
+]

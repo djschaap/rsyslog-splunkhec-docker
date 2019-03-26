@@ -1,0 +1,18 @@
+[
+  {
+    "cisco_facility":"ADJ",
+    "cisco_mnemonic":"RESOLVE_REQ_FAIL",
+    "cisco_priority":"5",
+    "event.tags":[
+      "ios_seqno_timestamp_msec_tz_year_unsynced"
+    ],
+    "inner_datetime":"Mar 26 2019 19:42:42",
+    "inner_msec":"931",
+    "inner_tz":"GMT",
+    "message":"Adj resolve request failed for 192.0.2.8 on Vlan2",
+    "pri":"189",
+    "seqno":"146866",
+    "seqno2":"146833",
+    "sourcetype":"col:syslog:cisco:ios"
+  }
+]

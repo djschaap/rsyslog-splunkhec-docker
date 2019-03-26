@@ -1,0 +1,1 @@
+<190>97427: RTR01: 097423: Mar 26 11:42:42.985 PDT: %IOSXE-6-PLATFORM: SIP1: cpp_cp: QFP:0.0 Thread:000 TS:00001463139739099110 %FW-6-LOG_SUMMARY: 55 udp packets were dropped from GigabitEthernet0/0/1.10 192.0.2.10:42995 => 255.255.255.255:42995 (target:class)-(DEFAULT-PCI-SELF:class-default)

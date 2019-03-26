@@ -2,4 +2,4 @@ version=2
 
 type=@datetime_trap:%date:date-iso% %time:time-24hr%
 
-rule=snmp_trap:%dt:@datetime_trap% UDP: [%trap_src_ip:ipv4%]:%trap_src_port:number%->[%trap_dst_ip:ipv4%]:%trap_dst_port:number%:\t%msg:rest%
+rule=snmp_trap:%dt:@datetime_trap% UDP: [%trap_src_ip:ipv4%]:%trap_src_port:number%->[%trap_dst_ip:ipv4%]:%trap_dst_port:number%:\t%message:rest%

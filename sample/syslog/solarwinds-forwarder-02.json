@@ -1,0 +1,24 @@
+[
+  {
+    "app_name": "MSWinEventLog",
+    "date": "Mar 27 11:15:41",
+    "event.tags":[
+      "from_MSWinEventLog"
+    ],
+    "hostname": "myhost.example.com",
+    "message": "Test Message from Log Forwarder to the 'Application' event log.",
+    "pri": "4",
+    "syslogtag": "MSWinEventLog:",
+    "win_event_01":"4",
+    "win_event_07":"",
+    "win_event_computer":"MYHOST.example.com",
+    "win_event_datetime":"Mar 27 11:15:41 2019",
+    "win_event_id":"0",
+    "win_event_keywords":"Warning",
+    "win_event_log":"Application",
+    "win_event_record_id":"4425",
+    "win_event_source":"SolarWinds Log Forwarder for Windows (Application)",
+    "win_event_task":"0",
+    "win_event_user":"N\/A"
+  }
+]

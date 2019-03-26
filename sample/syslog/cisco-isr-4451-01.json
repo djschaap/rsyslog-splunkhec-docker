@@ -1,0 +1,19 @@
+[
+  {
+    "cisco_facility":"IOSXE",
+    "cisco_mnemonic":"PLATFORM",
+    "cisco_priority":"6",
+    "event.tags":[
+      "iosxe_seqno_timestamp_msec_tz_origin"
+    ],
+    "inner_datetime":"Mar 26 11:42:43",
+    "inner_host":"RTR01",
+    "inner_msec":"832",
+    "inner_tz":"MST",
+    "message":"cpp_cp: QFP:0.0 Thread:001 TS:00030437466936823026 %FW-6-DROP_PKT: Dropping udp pkt from GigabitEthernet0/0/1.10 192.0.2.11:42990 => 255.255.255.255:42990(target:class)-(DEFAULT-PCI_19-SELF:class-default) due to Policy drop:classify result with ip ident 18478",
+    "pri":"190",
+    "seqno":"107356936",
+    "seqno2":"107356938",
+    "sourcetype":"col:syslog:cisco:ios"
+  }
+]

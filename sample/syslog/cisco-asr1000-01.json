@@ -1,0 +1,10 @@
+[
+  {
+    "originalmsg":"<191>859908455: SIP/2.0 200 OK",
+    "unparsed-data":" 200 OK"
+  },
+  {
+    "originalmsg":"<191>859908456: Via: SIP/2.0/UDP 192.0.2.2:5060;branch=z9hgGk22b9f3D71569",
+    "unparsed-data":"SIP/2.0/UDP 192.0.2.2:5060;branch=z9hgGk22b9f3D71569"
+  }
+]

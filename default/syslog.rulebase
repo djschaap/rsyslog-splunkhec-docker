@@ -1,5 +1,187 @@
 version=2
 
+prefix=<%pri:number%>
+# \x25 = %
+# \x3a = :
+
+# Cisco ASAv
+# logging timestamp
+# logging device-id ipaddress inside
+rule=asa_timestamp_deviceid:%
+    inner_datetime:date-rfc3164
+  % %
+    inner_host:char-to:\x20
+  % : %%ASA-%
+    asa_priority:number
+  %-%
+    asa_event:char-to:\x3a
+  %: %
+    message:rest%
+annotate=asa_timestamp_deviceid:+sourcetype="col:syslog:cisco:asa"
+
+# Cisco ASR 1000 15.5 (too vague!)
+# service sequence-numbers
+# service timestamps log datatime msec localtime show-timezone year
+#rule=ios_seqno_timestamp_msec_tz_origin:%
+#    seqno:number
+#  %: %
+#    message:rest%
+
+rule=ios_seqno_timestamp_origin:%seqno2:number%: %inner_host:char-to:\x3a%: %seqno:number%\x3a %inner_datetime:date-rfc3164% %message:rest%
+
+#rule=ios_seqno_timestamp_msec_origin
+
+# Cisco Cat 2960X
+# service sequence-numbers
+# service timestamps log datatime msec localtime show-timezone
+# logging origin-id ip
+rule=ios_seqno_timestamp_msec_tz_origin:%
+    seqno2:number
+  %: %
+    inner_host:char-to:\x3a
+  %: %
+    seqno:number
+  %\x3a %
+    inner_datetime:date-rfc3164
+  %.%
+    inner_msec:number
+  % %
+    inner_tz:char-to:\x3a
+  %: %%%
+    cisco_facility:char-to:-
+  %-%
+    cisco_priority:number
+  %-%
+    cisco_mnemonic:char-to:\x3a
+  %: %
+    message:rest%
+annotate=ios_seqno_timestamp_msec_tz_origin:+sourcetype="col:syslog:cisco:ios"
+
+# Cisco ISR 4551 15.5
+#   ios_seqno_timestamp_msec_tz_origin w/no space before rest
+# service sequence-numbers
+# service timestamps log datatime msec localtime show-timezone
+# logging origin-id hostname
+rule=iosxe_seqno_timestamp_msec_tz_origin:%
+    seqno2:number
+  %: %
+    inner_host:char-to:\x3a
+  %: %
+    seqno:number
+  %\x3a %
+    inner_datetime:date-rfc3164
+  %.%
+    inner_msec:number
+  % %
+    inner_tz:char-to:\x3a
+  %: %%%
+    cisco_facility:char-to:-
+  %-%
+    cisco_priority:number
+  %-%
+    cisco_mnemonic:char-to:\x3a
+  %:%
+    message:rest%
+annotate=iosxe_seqno_timestamp_msec_tz_origin:+sourcetype="col:syslog:cisco:ios"
+
+# Cisco Cat 3560X 15.2
+# service sequence-numbers
+# service timestamps log datatime msec localtime show-timezone year
+rule=ios_seqno_timestamp_msec_tz_year:%
+    seqno2:number
+  %: %
+    seqno:number
+  %\x3a %
+    inner_datetime:date-rfc3164
+  %.%
+    inner_msec:number
+  % %
+    inner_tz:char-to:\x3a
+  %: %%%
+    cisco_facility:char-to:-
+  %-%
+    cisco_priority:number
+  %-%
+    cisco_mnemonic:char-to:\x3a
+  %: %
+    message:rest%
+annotate=ios_seqno_timestamp_msec_tz_year:+sourcetype="col:syslog:cisco:ios"
+
+# Cisco Cat 3560X 15.2
+# service sequence-numbers
+# service timestamps log datatime msec localtime show-timezone year
+rule=ios_seqno_timestamp_msec_tz_year_unsynced:%
+    seqno2:number
+  %: %
+    seqno:number
+  %\x3a .%
+    inner_datetime:date-rfc3164
+  %.%
+    inner_msec:number
+  % %
+    inner_tz:char-to:\x3a
+  %: %%%
+    cisco_facility:char-to:-
+  %-%
+    cisco_priority:number
+  %-%
+    cisco_mnemonic:char-to:\x3a
+  %: %
+    message:rest%
+annotate=ios_seqno_timestamp_msec_tz_year_unsynced:+sourcetype="col:syslog:cisco:ios"
+
+#rule=ios_seqno_timestamp_tz_origin
+
+####################
+# SolarWinds Event Log Forwarder for Windows
+#  1 win_event_01
+#  2 win_event_log
+#  3 win_event_record_id = event record ID
+#  4 win_event_datetime
+#  5 win_event_id = event ID
+#  6 win_event_source = event source (application name)
+#  7 win_event_07
+#  8 win_event_user
+#  9 win_event_keywords = keywords
+#    OR "Event type" (Error(2), Warning(3), Information(4))
+# 10 win_event_computer
+# 11 win_event_task (task IDs are local to each source)
+# 12 message
+# missing: keywords (from long hex number), opcode
+#   EVENTLOGRECORD EventType
+#  ... similar to SNARE format
+
 annotate=from_MSWinEventLog:+app_name="MSWinEventLog"
 annotate=from_MSWinEventLog:+syslogtag="MSWinEventLog:"
-rule=from_MSWinEventLog:<%pri:number%>%date:date-rfc3164% %hostname:word% MSWinEventLog#011%msg:rest%
+# TODO "MSWinEventLog" = "MSWinEventLog Agent" ?
+rule=from_MSWinEventLog_old:%date:date-rfc3164% %hostname:word% MSWinEventLog\x09%message:rest%
+
+rule=from_MSWinEventLog:%
+    date:date-rfc3164
+  % %
+    hostname:word
+  % MSWinEventLog\x09%
+    win_event_01:char-sep:\x09
+  %\x09%
+    win_event_log:char-sep:\x09
+  %\x09%
+    win_event_record_id:char-sep:\x09
+  %\x09%
+    win_event_datetime:char-sep:\x09%\x09%
+    win_event_id:char-sep:\x09
+  %\x09%
+    win_event_source:char-sep:\x09%\x09%
+    win_event_07:char-sep:\x09
+  %\x09%
+    win_event_user:char-sep:\x09
+  %\x09%
+    win_event_keywords:char-sep:\x09%\x09%
+    win_event_computer:char-sep:\x09
+  %\x09%
+    win_event_task:char-sep:\x09
+  %\x09%
+    message:rest%
+
+####################
+
+prefix=

@@ -1,0 +1,1 @@
+<166>Mar 26 2019 14:10:16 192.0.2.2 : %ASA-6-106100: access-list INSIDE-IN denied udp inside/192.0.2.100(58053)(DOMAIN\username) -> outside/10.0.0.42(5004) hit-cnt 1 first hit [0xe09e37c3, 0x00000000]

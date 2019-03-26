@@ -1,0 +1,24 @@
+[
+  {
+    "app_name": "MSWinEventLog",
+    "date": "Mar 26 03:47:58",
+    "event.tags":[
+      "from_MSWinEventLog"
+    ],
+    "hostname": "myhost.example.com",
+    "message": "Veeam Agent 'Backup Job SERVER2' finished with Error and will be retried.#015#012#015#012Job details: Error: Failed to connect to the Veeam Cloud Connect service#012#012Unable to connect to the service provider.#012#012Aconnection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 192.0.2.4:6180",
+    "pri": "27",
+    "syslogtag": "MSWinEventLog:",
+    "win_event_01":"8",
+    "win_event_07":"",
+    "win_event_computer":"SERVER2.example.com",
+    "win_event_datetime":"Mon Mar 25 22:47:48 2019",
+    "win_event_id":"191",
+    "win_event_keywords":"Warning",
+    "win_event_log":"Application",
+    "win_event_record_id":"1",
+    "win_event_source":"Veeam Agent",
+    "win_event_task":"0",
+    "win_event_user":"N\/A"
+  }
+]

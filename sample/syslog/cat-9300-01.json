@@ -1,0 +1,18 @@
+[
+  {
+    "cisco_facility":"ILPOWER",
+    "cisco_mnemonic":"IEEE_DISCONNECT",
+    "cisco_priority":"5",
+    "event.tags":[
+      "ios_seqno_timestamp_msec_tz_year"
+    ],
+    "inner_datetime":"Mar 26 2019 13:42:42",
+    "inner_msec":"998",
+    "inner_tz":"CDT",
+    "message":"Interface Gi2/0/22: PD removed",
+    "pri":"189",
+    "seqno":"15671060",
+    "seqno2":"10679725",
+    "sourcetype":"col:syslog:cisco:ios"
+  }
+]
