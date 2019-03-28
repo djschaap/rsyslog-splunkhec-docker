@@ -1,7 +1,0 @@
-action(
-  type="omprog"
-  binary="/config/omsplunkhec.py HEC_TOKEN HEC_HOST"
-  # if 8088 is using SSL: add --ssl --ssl_noverify
-  # --port=8088 # default
-  template="json_to_splunk_hec"
-)

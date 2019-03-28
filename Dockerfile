@@ -17,10 +17,11 @@ RUN apk --no-cache add python \
   && chown -R rsyslog.rsyslog /logs /work
 
 COPY config /config
+COPY default /default
 COPY entrypoint.sh /
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["rsyslogd", "-f", "/config/rsyslog.conf", "-n"]
+CMD ["rsyslogd", "-f", "/default/rsyslog.conf", "-n"]
 
 EXPOSE 5140/udp 5141/udp 5142/udp 5143/udp 5145/udp
 
