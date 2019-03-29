@@ -8,7 +8,7 @@ USE AT YOUR OWN RISK.
 
 Project Home: https://github.com/djschaap/rsyslog-splunkhec-docker
 
-Docker Hub: https://cloud.docker.com/repository/docker/djschaap/rsyslog_splunkhec
+Docker Hub: https://cloud.docker.com/repository/docker/djschaap/rsyslog-splunkhec-docker
 
 ## Makefile targets
 
@@ -24,11 +24,15 @@ make snapshot		build from the current (dirty) workspace and pushes the image to 
 make check-status	will check whether there are outstanding changes
 make check-release	will check whether the current directory matches the tagged release in git.
 make showver		will show the current release tag based on the directory content.
+make shell		build, then start container and run /bin/ash
+make test		build, then start container and run tests
 ```
 
 ## liblognorm Tests
 
-within container: python -m unittest discover
+make test
+
+or, within container: python -m unittest discover
 
 ## See Also
 

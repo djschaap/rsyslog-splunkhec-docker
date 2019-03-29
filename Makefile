@@ -113,3 +113,11 @@ check-status:
 check-release: .release
 	@. $(RELEASE_SUPPORT) ; tagExists $(TAG) || (echo "ERROR: version not yet tagged in git. make [minor,major,patch]-release." >&2 && exit 1) ;
 	@. $(RELEASE_SUPPORT) ; ! differsFromRelease $(TAG) || (echo "ERROR: current directory differs from tagged $(TAG). make [minor,major,patch]-release." ; exit 1)
+
+# local project additions
+
+shell: build
+	@docker run -it --rm -v $(shell pwd)/sample:/sample -v $(shell pwd)/test:/test $(IMAGE):$(VERSION) /bin/ash
+
+test: build
+	@docker run --rm -v $(shell pwd)/sample:/sample -v $(shell pwd)/test:/test $(IMAGE):$(VERSION) python -m unittest discover
