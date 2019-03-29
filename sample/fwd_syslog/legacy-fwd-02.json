@@ -1,0 +1,21 @@
+[
+  {
+    "cisco_facility":"RADIUS",
+    "cisco_mnemonic":"RADIUS_DEAD",
+    "cisco_priority":"4",
+    "event.tags":[
+      "legacy_fwd_ios_seqno_timestamp_msec_tz_origin"
+    ],
+    "inner_datetime":"Mar 26 13:01:01",
+    "inner_datetime2":"Mar 26 18:01:01",
+    "inner_host":"192.0.2.42",
+    "inner_host2":"192.0.2.3",
+    "inner_msec":"001",
+    "inner_tz":"CDT",
+    "message":"RADIUS server 192.0.2.50:1812,1813 is not responding.",
+    "pri":"188",
+    "seqno":"12056961",
+    "seqno2":"12019228",
+    "sourcetype":"col:syslog:cisco:ios"
+  }
+]

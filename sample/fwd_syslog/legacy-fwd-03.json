@@ -1,0 +1,20 @@
+[
+  {
+    "cisco_facility":"IOSXE",
+    "cisco_mnemonic":"PLATFORM",
+    "cisco_priority":"3",
+    "event.tags":[
+      "legacy_fwd_iosxe_seqno_timestamp_msec_tz_origin"
+    ],
+    "inner_datetime":"Mar 29 2019 13:03:14",
+    "inner_datetime2":"Mar 29 18:03:15",
+    "inner_host":"192.0.2.2",
+    "inner_msec":"598",
+    "inner_tz":"CDT",
+    "message":"R0/0: cpp_cp: QFP:0.0 Thread:000 TS:00006140604519330878 %IPSEC-3-REPLAY_ERROR: IPSec SA receives anti-replay error, DP Handle 668, src_addr 192.0.2.172, dest_addr 0.0.0.0, SPI 0x0",
+    "pri":"187",
+    "seqno":"116862",
+    "seqno2":"116864",
+    "sourcetype":"col:syslog:cisco:ios"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "cisco_facility":"AUTHMGR",
+    "cisco_mnemonic":"SECURITY_VIOLATION",
+    "cisco_priority":"5",
+    "event.tags":[
+      "legacy_fwd_ios_seqno_timestamp_msec"
+    ],
+    "inner_datetime":"Mar 29 12:30:41",
+    "inner_datetime2":"Mar 29 17:30:42",
+    "inner_host":"192.0.2.2",
+    "inner_msec":"916",
+    "message":"Security violation on the interface FiveGigabitEthernet1/0/14, new MAC address (2001.0000.0001) is seen.",
+    "pri":"189",
+    "seqno":"250393",
+    "sourcetype":"col:syslog:cisco:ios"
+  }
+]

@@ -4,6 +4,8 @@ prefix=<%pri:number%>
 # \x25 = %
 # \x3a = :
 
+####################
+
 # Cisco ASAv
 # logging timestamp
 # logging device-id ipaddress inside
@@ -22,7 +24,7 @@ annotate=asa_timestamp_deviceid:+sourcetype="col:syslog:cisco:asa"
 # Cisco ASR 1000 15.5 (too vague!)
 # service sequence-numbers
 # service timestamps log datatime msec localtime show-timezone year
-#rule=ios_seqno_timestamp_msec_tz_origin:%
+#rule=ios_seqno_timestamp_msec_local_tz_year:%
 #    seqno:number
 #  %: %
 #    message:rest%
@@ -84,7 +86,7 @@ rule=iosxe_seqno_timestamp_msec_tz_origin:%
     message:rest%
 annotate=iosxe_seqno_timestamp_msec_tz_origin:+sourcetype="col:syslog:cisco:ios"
 
-# Cisco Cat 3560X 15.2
+# Cisco Cat 3560X 15.2 & Cat 9300
 # service sequence-numbers
 # service timestamps log datatime msec localtime show-timezone year
 rule=ios_seqno_timestamp_msec_tz_year:%

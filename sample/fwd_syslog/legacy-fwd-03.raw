@@ -1,0 +1,1 @@
+<187>Mar 29 18:03:15 192.0.2.2 116864 116862: Mar 29 2019 13:03:14.598 CDT: %IOSXE-3-PLATFORM: R0/0: cpp_cp: QFP:0.0 Thread:000 TS:00006140604519330878 %IPSEC-3-REPLAY_ERROR: IPSec SA receives anti-replay error, DP Handle 668, src_addr 192.0.2.172, dest_addr 0.0.0.0, SPI 0x0

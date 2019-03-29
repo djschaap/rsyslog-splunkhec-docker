@@ -1,0 +1,1 @@
+<164>Mar 29 18:23:56 192.0.2.2  %ASA-4-106023: Deny udp src outside:192.0.2.4/162 dst inside:192.0.2.3/162 by access-group "FW-ACL" [0x0, 0x0]

@@ -1,0 +1,129 @@
+version=2
+
+prefix=<%pri:number%>
+# \x25 = %
+# \x3a = :
+
+####################
+
+# legacy format - applicable when forwarding through rsyslog
+#       covers: asa_timestamp_deviceid
+rule=legacy_fwd_asa_timestamp_deviceid:%
+    inner_datetime:date-rfc3164
+  % %
+    inner_host:char-to:\x20
+  %  %%ASA-%
+    asa_priority:number
+  %-%
+    asa_event:char-to:\x3a
+  %: %
+    message:rest%
+annotate=legacy_fwd_asa_timestamp_deviceid:+sourcetype="col:syslog:cisco:asa"
+
+# legacy format - applicable when forwarding through rsyslog
+#       covers: ios_seqno_timestamp_msec_year (does not exist)
+rule=legacy_fwd_ios_seqno_timestamp_msec:%
+    inner_datetime2:date-rfc3164
+  % %
+    inner_host:char-to:\x3a
+  % %
+    seqno:number
+  % %
+    inner_datetime:date-rfc3164
+  %.%
+    inner_msec:number
+  %: %%%
+    cisco_facility:char-to:-
+  %-%
+    cisco_priority:number
+  %-%
+    cisco_mnemonic:char-to:\x3a
+  %: %
+    message:rest%
+annotate=legacy_fwd_ios_seqno_timestamp_msec:+sourcetype="col:syslog:cisco:ios"
+
+# legacy format - applicable when forwarding through rsyslog
+#       covers: ios_seqno_timestamp_msec_tz_year
+rule=legacy_fwd_ios_seqno_timestamp_msec_tz:%
+    inner_datetime2:date-rfc3164
+  % %
+    inner_host:char-to:\x3a
+  % %
+    seqno:number
+  % %
+    inner_datetime:date-rfc3164
+  %.%
+    inner_msec:number
+  % %
+    inner_tz:char-to:\x3a
+  %: %%%
+    cisco_facility:char-to:-
+  %-%
+    cisco_priority:number
+  %-%
+    cisco_mnemonic:char-to:\x3a
+  %: %
+    message:rest%
+annotate=legacy_fwd_ios_seqno_timestamp_msec_tz:+sourcetype="col:syslog:cisco:ios"
+
+# legacy format - applicable when forwarding through rsyslog
+#       covers: ios_seqno_timestamp_msec_tz_origin
+rule=legacy_fwd_ios_seqno_timestamp_msec_tz_origin:%
+    inner_datetime2:date-rfc3164
+  % %
+    inner_host2:char-to:\x3a
+  % %
+    seqno2:number
+  %: %
+    inner_host:char-to:\x3a
+  %: %
+    seqno:number
+  %\x3a %
+    inner_datetime:date-rfc3164
+  %.%
+    inner_msec:number
+  % %
+    inner_tz:char-to:\x3a
+  %: %%%
+    cisco_facility:char-to:-
+  %-%
+    cisco_priority:number
+  %-%
+    cisco_mnemonic:char-to:\x3a
+  %: %
+    message:rest%
+annotate=legacy_fwd_ios_seqno_timestamp_msec_tz_origin:+sourcetype="col:syslog:cisco:ios"
+
+#   ios_seqno_timestamp_msec_tz_origin w/no space before rest
+# service sequence-numbers
+# service timestamps log datatime msec localtime show-timezone
+# logging origin-id hostname
+# legacy format - applicable when forwarding through rsyslog
+#       covers: iosxe_seqno_timestamp_msec_tz_origin (requires spc before msg)
+rule=legacy_fwd_iosxe_seqno_timestamp_msec_tz_origin:%
+    inner_datetime2:date-rfc3164
+  % %
+    inner_host:char-to:\x3a
+  % %
+    seqno2:number
+  % %
+    seqno:number
+  %\x3a %
+    inner_datetime:date-rfc3164
+  %.%
+    inner_msec:number
+  % %
+    inner_tz:char-to:\x3a
+  %: %%%
+    cisco_facility:char-to:-
+  %-%
+    cisco_priority:number
+  %-%
+    cisco_mnemonic:char-to:\x3a
+  %: %
+    message:rest%
+annotate=legacy_fwd_iosxe_seqno_timestamp_msec_tz_origin:+sourcetype="col:syslog:cisco:ios"
+
+####################
+
+prefix=

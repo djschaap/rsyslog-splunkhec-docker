@@ -1,0 +1,14 @@
+[
+  {
+    "asa_event":"106023",
+    "asa_priority":"4",
+    "event.tags":[
+      "legacy_fwd_asa_timestamp_deviceid"
+    ],
+    "inner_datetime":"Mar 29 18:23:56",
+    "inner_host":"192.0.2.2",
+    "message":"Deny udp src outside:192.0.2.4/162 dst inside:192.0.2.3/162 by access-group \"FW-ACL\" [0x0, 0x0]",
+    "pri":"164",
+    "sourcetype":"col:syslog:cisco:asa"
+  }
+]
