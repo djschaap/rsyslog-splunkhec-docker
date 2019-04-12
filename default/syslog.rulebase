@@ -19,7 +19,7 @@ rule=asa_timestamp_deviceid:%
     asa_event:char-to:\x3a
   %: %
     message:rest%
-annotate=asa_timestamp_deviceid:+sourcetype="col:syslog:cisco:asa"
+annotate=asa_timestamp_deviceid:+sourcetype="cisco:asa"
 
 # Cisco ASR 1000 15.5 (too vague!)
 # service sequence-numbers
@@ -30,6 +30,7 @@ annotate=asa_timestamp_deviceid:+sourcetype="col:syslog:cisco:asa"
 #    message:rest%
 
 rule=ios_seqno_timestamp_origin:%seqno2:number%: %inner_host:char-to:\x3a%: %seqno:number%\x3a %inner_datetime:date-rfc3164% %message:rest%
+annotate=ios_seqno_timestamp_origin:+sourcetype="syslog:cisco:ios"
 
 #rule=ios_seqno_timestamp_msec_origin
 
@@ -57,7 +58,7 @@ rule=ios_seqno_timestamp_msec_tz_origin:%
     cisco_mnemonic:char-to:\x3a
   %: %
     message:rest%
-annotate=ios_seqno_timestamp_msec_tz_origin:+sourcetype="col:syslog:cisco:ios"
+annotate=ios_seqno_timestamp_msec_tz_origin:+sourcetype="syslog:cisco:ios"
 
 # Cisco ISR 4551 15.5
 #   ios_seqno_timestamp_msec_tz_origin w/no space before rest
@@ -84,7 +85,7 @@ rule=iosxe_seqno_timestamp_msec_tz_origin:%
     cisco_mnemonic:char-to:\x3a
   %:%
     message:rest%
-annotate=iosxe_seqno_timestamp_msec_tz_origin:+sourcetype="col:syslog:cisco:ios"
+annotate=iosxe_seqno_timestamp_msec_tz_origin:+sourcetype="syslog:cisco:ios"
 
 # Cisco Cat 3560X 15.2 & Cat 9300
 # service sequence-numbers
@@ -107,7 +108,7 @@ rule=ios_seqno_timestamp_msec_tz_year:%
     cisco_mnemonic:char-to:\x3a
   %: %
     message:rest%
-annotate=ios_seqno_timestamp_msec_tz_year:+sourcetype="col:syslog:cisco:ios"
+annotate=ios_seqno_timestamp_msec_tz_year:+sourcetype="syslog:cisco:ios"
 
 # Cisco Cat 3560X 15.2
 # service sequence-numbers
@@ -130,9 +131,45 @@ rule=ios_seqno_timestamp_msec_tz_year_unsynced:%
     cisco_mnemonic:char-to:\x3a
   %: %
     message:rest%
-annotate=ios_seqno_timestamp_msec_tz_year_unsynced:+sourcetype="col:syslog:cisco:ios"
+annotate=ios_seqno_timestamp_msec_tz_year_unsynced:+sourcetype="syslog:cisco:ios"
 
 #rule=ios_seqno_timestamp_tz_origin
+
+# Cisco WLC 5500
+rule=cisco_wlc:%
+    inner_host:char-to:\x3a
+  %: %
+    wlc_task:char-to:\x3a
+  %: %
+    inner_datetime:date-rfc3164
+  %.%
+    inner_msec:number
+  %: %%%
+    cisco_facility:char-to:-
+  %-%
+    cisco_priority:number
+  %-%
+    cisco_mnemonic:char-to:\x3a
+  %: %
+    message:rest%
+annotate=cisco_wlc:+sourcetype="syslog:cisco:wlc"
+
+# HP 870 WLC
+# non-standard year placement:
+#   MMM DD HH:MM:SS YYYY hostname %%10...
+rule=hp_870_wlc:%
+    inner_datetime:date-rfc3164
+  % %
+    inner_year:number
+  % %
+    inner_host:word
+  % %%%%%
+    hp_mnemonic:char-to:/
+  %/%
+    inner_priority:number
+  %/%
+    message:rest%
+annotate=hp_870_wlc:+sourcetype="syslog:hp"
 
 ####################
 # SolarWinds Event Log Forwarder for Windows

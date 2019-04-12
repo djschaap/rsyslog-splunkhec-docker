@@ -15,6 +15,6 @@
     "pri":"187",
     "seqno":"116862",
     "seqno2":"116864",
-    "sourcetype":"col:syslog:cisco:ios"
+    "sourcetype":"syslog:cisco:ios"
   }
 ]

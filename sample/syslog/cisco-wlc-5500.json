@@ -1,0 +1,17 @@
+[
+  {
+    "cisco_facility":"DOT1X",
+    "cisco_mnemonic":"STICK_CACHE_SIZE_EXCEEDED",
+    "cisco_priority":"3",
+    "event.tags":[
+      "cisco_wlc"
+    ],
+    "inner_datetime":"Apr 15 11:51:28",
+    "inner_host":"DEMOWLC",
+    "inner_msec":"623",
+    "message":"1x_keycache.c:636 Sticky cache can't be supported for 9th AP.Client MAC 74:b5:87:01:01:01.",
+    "pri":"131",
+    "sourcetype":"syslog:cisco:wlc",
+    "wlc_task":"*Dot1x_NW_MsgTask_5"
+  }
+]

@@ -18,7 +18,7 @@ rule=legacy_fwd_asa_timestamp_deviceid:%
     asa_event:char-to:\x3a
   %: %
     message:rest%
-annotate=legacy_fwd_asa_timestamp_deviceid:+sourcetype="col:syslog:cisco:asa"
+annotate=legacy_fwd_asa_timestamp_deviceid:+sourcetype="cisco:asa"
 
 # legacy format - applicable when forwarding through rsyslog
 #       covers: ios_seqno_timestamp_msec_year (does not exist)
@@ -40,7 +40,7 @@ rule=legacy_fwd_ios_seqno_timestamp_msec:%
     cisco_mnemonic:char-to:\x3a
   %: %
     message:rest%
-annotate=legacy_fwd_ios_seqno_timestamp_msec:+sourcetype="col:syslog:cisco:ios"
+annotate=legacy_fwd_ios_seqno_timestamp_msec:+sourcetype="syslog:cisco:ios"
 
 # legacy format - applicable when forwarding through rsyslog
 #       covers: ios_seqno_timestamp_msec_tz_year
@@ -64,7 +64,7 @@ rule=legacy_fwd_ios_seqno_timestamp_msec_tz:%
     cisco_mnemonic:char-to:\x3a
   %: %
     message:rest%
-annotate=legacy_fwd_ios_seqno_timestamp_msec_tz:+sourcetype="col:syslog:cisco:ios"
+annotate=legacy_fwd_ios_seqno_timestamp_msec_tz:+sourcetype="syslog:cisco:ios"
 
 # legacy format - applicable when forwarding through rsyslog
 #       covers: ios_seqno_timestamp_msec_tz_origin
@@ -92,7 +92,7 @@ rule=legacy_fwd_ios_seqno_timestamp_msec_tz_origin:%
     cisco_mnemonic:char-to:\x3a
   %: %
     message:rest%
-annotate=legacy_fwd_ios_seqno_timestamp_msec_tz_origin:+sourcetype="col:syslog:cisco:ios"
+annotate=legacy_fwd_ios_seqno_timestamp_msec_tz_origin:+sourcetype="syslog:cisco:ios"
 
 #   ios_seqno_timestamp_msec_tz_origin w/no space before rest
 # service sequence-numbers
@@ -122,7 +122,7 @@ rule=legacy_fwd_iosxe_seqno_timestamp_msec_tz_origin:%
     cisco_mnemonic:char-to:\x3a
   %: %
     message:rest%
-annotate=legacy_fwd_iosxe_seqno_timestamp_msec_tz_origin:+sourcetype="col:syslog:cisco:ios"
+annotate=legacy_fwd_iosxe_seqno_timestamp_msec_tz_origin:+sourcetype="syslog:cisco:ios"
 
 ####################
 
